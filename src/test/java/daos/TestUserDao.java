@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 public class TestUserDao {
@@ -32,7 +30,7 @@ public class TestUserDao {
         UserDao d = new UserDao();
 
         // When
-        Set<User> actual = d.findAllUsers();
+        Set<User> actual = d.findAll();
 
         // Then
         Assert.assertTrue(actual.size() > 0);
@@ -45,7 +43,7 @@ public class TestUserDao {
         User givenUser = new User("iHeartPuppies", "Christina Shoemaker", LocalDate.of(1995, 9, 12), "Wilmington", "USA", "puppiesRcute");
 
         // When
-        Integer userCreated = d.createUser(givenUser);
+        Integer userCreated = d.create(givenUser);
 
         // Then
         Assert.assertTrue(userCreated != null);
@@ -58,7 +56,7 @@ public class TestUserDao {
         User givenUser = new User(4,"iHeartPuppies", "Christina Shoemaker", LocalDate.of(1995, 9, 12), "Dublin", "Ireland", "puppiesRcute");
 
         // When
-        Boolean userUpdated = d.updateUser(givenUser);
+        Boolean userUpdated = d.update(givenUser);
 
         // Then
         Assert.assertTrue(userUpdated);
@@ -72,8 +70,8 @@ public class TestUserDao {
 
 
         // When
-        Integer actualId = d.createUser(givenUser);
-        boolean deleted = d.deleteUser(actualId);
+        Integer actualId = d.create(givenUser);
+        boolean deleted = d.delete(actualId);
 
         // Then
         Assert.assertTrue(actualId != null);

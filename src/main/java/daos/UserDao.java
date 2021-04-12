@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserDao implements Dao {
+public class UserDao implements Dao<User> {
 
     Connection connection = ConnectionFactory.getConnection();
 
@@ -41,7 +41,7 @@ public class UserDao implements Dao {
         return user;
     }
 
-    public Set<User> findAllUsers() {
+    public Set<User> findAll() {
         try {
             Statement stmt = this.connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM User");
@@ -59,7 +59,7 @@ public class UserDao implements Dao {
         return null;
     }
 
-    public Integer createUser(User user) {
+    public Integer create(User user) {
         try {
             PreparedStatement ps = this.connection.prepareStatement("INSERT INTO User VALUES (null, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getUser() );
@@ -80,7 +80,7 @@ public class UserDao implements Dao {
         return null;
     }
 
-    public boolean updateUser(User user) {
+    public boolean update(User user) {
         try {
             PreparedStatement ps = this.connection.prepareStatement(
                     "UPDATE User " +
@@ -108,7 +108,7 @@ public class UserDao implements Dao {
         return false;
     }
 
-    public boolean deleteUser(int id) {
+    public boolean delete(int id) {
         try {
             Statement s = this.connection.createStatement();
             return s.executeUpdate("DELETE FROM user WHERE id=" + id) == 1;

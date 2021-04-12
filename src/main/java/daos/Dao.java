@@ -4,12 +4,12 @@ import models.User;
 
 import java.util.Set;
 
-public interface Dao {
+public interface Dao<T> {
 
     User findById(int id);
-    Set<User> findAllUsers();
-    Integer createUser(User user);
-    boolean updateUser(User user);
-    boolean deleteUser(int id);
+    Set<T> findAll();
+    Integer create(User user);
+    boolean update(User user);
+    boolean delete(int id);
 
 }

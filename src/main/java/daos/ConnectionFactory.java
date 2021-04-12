@@ -21,9 +21,4 @@ public class ConnectionFactory {
         }
 
     }
-
-    // Test the Connection
-    public static void main(String[] args) {
-        Connection connection = ConnectionFactory.getConnection();
-    }
 }
