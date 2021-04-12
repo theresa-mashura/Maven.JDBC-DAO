@@ -2,7 +2,7 @@ package models;
 
 import java.time.LocalDate;
 
-public class User {
+public class User implements Dto{
 
     private Integer id;
     private String user;
@@ -13,7 +13,7 @@ public class User {
 
     private String pass;
 
-    public User() {
+    public User()  {
     }
 
     public User(Integer id, String user, String name, LocalDate dob, String city, String country, String pass) {
